@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         countries = ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
+        
         
         button1.layer.borderWidth = 2
         button2.layer.borderWidth = 2
@@ -64,6 +66,12 @@ class ViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "Start new game", style: .default, handler: restartGame))
             present(ac, animated: true, completion: nil)
         }
+    }
+    
+    @objc func shareAction(){
+        let text = "My score: \(score)"
+        let ac = UIActivityViewController(activityItems: [text], applicationActivities: [])
+        present(ac, animated: true, completion: nil)
     }
 
 
